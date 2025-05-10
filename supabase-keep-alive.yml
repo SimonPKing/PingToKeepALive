@@ -1,0 +1,13 @@
+ name: Supabase Keep-Alive  # Name of your workflow
+  on:
+    schedule:
+      - cron: '0 0 * * 0'  # Runs at midnight UTC every Sunday.  (See cron syntax below)
+    workflow_dispatch:  # Allows you to manually run the workflow from the GitHub UI
+  jobs:
+    ping-supabase:
+      runs-on: ubuntu-latest  # Use a Ubuntu virtual machine
+      steps:
+        - name: Send a Ping Request
+          run: |
+            curl https://gqnpppxoyefxwdzabohv.supabase.co  \
+            -H "apikey: $SUPABASE_API_KEY"
